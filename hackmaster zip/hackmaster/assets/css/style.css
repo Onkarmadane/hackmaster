@@ -13,6 +13,9 @@ ul{
     background-color: #44dc3f; 
     
   }
+  /* li{
+    font-family:Arial, Helvetica, sans-serif;
+  } */
   
 
 #Hackmaster-Events{
@@ -358,6 +361,19 @@ padding: 10%;
   width: 300px;
   margin-top: 45%;
 
+}
+#intern-form{
+  /* background-color: slategray; */
+  max-width: 500px;
+  margin: auto;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+}
+.btn-success{
+  width: 300px;
+  margin: auto;
+ 
 }
 
 /* media queris */
