@@ -32,16 +32,19 @@
     <div class="collapse navbar-collapse justify-content-center " id="navbarNav">
       <ul class="navbar-nav px-1 py-1">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="./index.html" onclick="activateTab(this)">Home</a>
+          <a class="nav-link active" aria-current="page" href="./index.html" >Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./getinterns.html" onclick="activateTab(this)">We Are Hiring</a>
+          <a class="nav-link" href="./getinterns.html" >We Are Hiring</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./aboutus.html" onclick="activateTab(this)">About Us</a>
+          <a class="nav-link" href="./aboutus.html" >About Us</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./contactus.html" onclick="activateTab(this)">Contact Us</a>
+          <a class="nav-link" href="./gallery.html" >Gallery</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./contactus.html" >Contact Us</a>
         </li>
       </ul>
     </div>
@@ -137,49 +140,8 @@
         </div>
       </div> 
       </div>
-      <!-- Our Events -->
-      <h1 class="heading" style="text-align: center;">Our Events</h1>
-      <h3 class="heading1 mb-3 mt-3" style="text-align: center;">Hackathon23" Goodies distrinbution</h3>
-       <!-- Swiper -->
-       <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide"><img src="./assets/img/hackathon/hackathon1 (1).jpg" alt="img"></div>
-          <div class="swiper-slide"><img src="./assets/img/hackathon/hackathon1 (2).jpg" alt="img"></div>
-          <div class="swiper-slide"><img src="./assets/img/hackathon/hackathon1 (3).jpg" alt="img"></div>
-          <div class="swiper-slide"><img src="./assets/img/hackathon/hackathon1 (4).jpg" alt="img"></div>
-          <div class="swiper-slide"><img src="./assets/img/hackathon/hackathon1 (5).jpg" alt="img"></div>
-          <div class="swiper-slide"><img src="./assets/img/hackathon/hackathon1 (6).jpg" alt="img"></div>
-        </div>
-        <div class="swiper-pagination"></div>
-      </div>
-      <h3 class="heading1 mb-3 mt-3" style="text-align: center;">Event at Genba Sopanrao Moze, Balewadi</h3>
-       <!-- Swiper -->
-       <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide"><img src="./assets/img/genba/Genba Sopanrao Moze (7).jpg" alt="img"></div>
-          <div class="swiper-slide"><img src="./assets/img/genba/Genba Sopanrao Moze (2).jpg" alt="img"></div>
-          <div class="swiper-slide"><img src="./assets/img/genba/Genba Sopanrao Moze (3).jpg" alt="img"></div>
-          <div class="swiper-slide"><img src="./assets/img/genba/Genba Sopanrao Moze (4).jpg" alt="img"></div>
-          <div class="swiper-slide"><img src="./assets/img/genba/Genba Sopanrao Moze (5).jpg" alt="img"></div>
-          <div class="swiper-slide"><img src="./assets/img/genba/Genba Sopanrao Moze (6).jpg" alt="img"></div>
-          <div class="swiper-slide"><img src="./assets/img/genba/Genba Sopanrao Moze (7).jpg" alt="img"></div>
-        </div>
-        <div class="swiper-pagination"></div>
-      </div>
-      <h3 class="heading1 mb-3 mt-3" style="text-align: center;">Front-end Development Workshop at Netleap IT training solutions, Nashik</h3>
-       <!-- Swiper -->
-       <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide"><img src="./assets/img/netleap/net1 (1).jpg" alt="img"></div>
-          <div class="swiper-slide"><img src="./assets/img/netleap/net1 (2).jpg" alt="img"></div>
-          <div class="swiper-slide"><img src="./assets/img/netleap/net1 (3).jpg" alt="img"></div>
-          <div class="swiper-slide"><img src="./assets/img/netleap/net1 (4).jpg" alt="img"></div>
-          <div class="swiper-slide"><img src="./assets/img/netleap/net1 (5).jpg" alt="img"></div>
-          <div class="swiper-slide"><img src="./assets/img/netleap/net1 (3).jpg" alt="img"></div>
-        </div>
-        <div class="swiper-pagination"></div>
-      </div>
-      <!-- end of our event -->   
+      
+      <!-- Enquiry -->
       <div class="enquiry text-white" style="margin: 1%;max-width: 70%;margin: auto;">
       <!--Section: Contact v.2-->
     <section class="mb-4" style="padding: 1%;">
@@ -288,9 +250,32 @@
     </footer>  
     <!-- end footer -->
     <!-- Back to top button-->
-   <a href="#" id="toTopBtn" class="cd-top text-replace js-cd-top cd-top--is-visible cd-top--fade-out" data-abc="true"></a> 
+   <a href="#" id="toTopBtn" class="cd-top text-replace js-cd-top cd-top--is-visible cd-top--fade-out hvr-wobble-vertical " data-abc="true"></a> 
+   <!-- chatbot -->
+   <button id="logo-button" class="hvr-bounce-in button-glow" onclick="toggleChat()"><i class="fas fa-comment"></i></button>
+<div id="chat-container" class="container">
+    <button id="minimize-button" onclick="toggleChat()"><img src="./assets/img/logo.png" alt="" style="object-fit: cover;" width="40%"></button>
+    <div id="chat-messages">
+        <div class="message-container container bot-message fade-in">
+            <div class="message">Hi there! How can I assist you today?</div>
+        </div>
+    </div>
+    <div id="options">
+        <button onclick="askQuestion('What types of events does HACKMASTER ORG organize?')">Events</button>
+        <button onclick="askQuestion('How can I participate in your events?')">Participation</button>
+        <button onclick="askQuestion('Do you provide internships?')">Internship</button>
+        <button onclick="askQuestion('Can I get web/tech solutions from HACKMASTER ORG?')">Tech Solutions</button>
+        <button onclick="askQuestion('How can I partner with HACKMASTER ORG for an event or collaboration?')">Collaboration</button>
+        <button onclick="askQuestion('What kind of support do you provide during your events?')">Hackmaster Support</button>
+        <button onclick="askQuestion('How can I contact HACKMASTER ORG for further inquiries?')">Contact Hackmaster</button>
+        
+    </div>
+</div>
+
    <!-- ?scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous" defer></script>
+
+   <script src="./assets/js/chatbot.js"></script> 
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous" defer></script>
     <!-- <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script> -->
   <!-- <script>
     AOS.init();

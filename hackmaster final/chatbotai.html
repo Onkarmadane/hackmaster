@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ Chatbot</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+    }
+
+    #logo-button {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 50%;
+        cursor: pointer;
+        outline: none;
+        font-size: 20px;
+        z-index: 9999;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    #chat-container {
+        position: fixed;
+        bottom: 80px;
+        left: 50px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+        background-color: #ffffff;
+        color: #4CAF50;
+        font-size: 14px;
+        transition: all 0.3s ease;
+        max-height: 70%;
+        max-width: 30%;
+        display: none;
+        flex-direction: column;
+        animation: slideIn 0.5s ease;
+        z-index: 999;
+        background-color: #000000;
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: translateY(100%);
+        }
+        to {
+            transform: translateY(0);
+        }
+    }
+
+    #minimize-button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        outline: none;
+        font-size: 20px;
+    }
+
+    #chat-messages {
+        padding: 10px;
+        flex-grow: 1;
+        overflow-y: auto;  
+    }
+
+    #options {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 10px;
+        gap: 10px;
+        justify-content: center;
+        background-color: #f5f5f5;
+    }
+
+    #options button {
+        background-color: #4CAF50;
+        color: rgb(0, 0, 0);
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    #options button:hover {
+        background-color: #45a049;
+    }
+
+    .message-container {
+        display: flex;
+        margin: 5px 0;
+    }
+
+    .message-container strong {
+        margin-right: 5px;
+    }
+
+    .message {
+        background-color: #4CAF50;
+        color: rgb(0, 0, 0);
+        padding: 10px;
+        border-radius: 5px;
+        margin-right: auto;
+        max-width: 80%;
+    }
+    .message-you {
+        background-color: #29622a;
+        color: rgb(255, 255, 255);
+        padding: 10px;
+        border-radius: 5px;
+        margin-right: auto;
+        max-width: 80%;
+    }
+
+    .bot-message {
+        background-color: #000000;
+    }
+
+    .fade-in {
+        animation: fadeIn 0.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+</head>
+<body>
+
+<button id="logo-button" onclick="toggleChat()"><i class="fas fa-comment"></i></button>
+
+<div id="chat-container" class="p-2">
+    <button id="minimize-button" onclick="toggleChat()">-</button>
+    <div id="chat-messages">
+        <div class="message-container bot-message fade-in">
+            <div class="message">Hi there! How can I assist you today?</div>
+        </div>
+    </div>
+    <div id="options" class="mt-auto">
+        <button onclick="askQuestion('What types of events does HACKMASTER ORG organize?')">Events</button>
+        <button onclick="askQuestion('How can I participate in your events?')">Participation</button>
+        <button onclick="askQuestion('Do you provide internships?')">Internship</button>
+        <button onclick="askQuestion('Can I get web/tech solutions from HACKMASTER ORG?')">Tech Solutions</button>
+        <button onclick="askQuestion('How can I partner with HACKMASTER ORG for an event or collaboration?')">Collaboration</button>
+        <button onclick="askQuestion('What kind of support do you provide during your events?')">Hackmaster Support</button>
+        <button onclick="askQuestion('How can I contact HACKMASTER ORG for further inquiries?')">Contact Hackmaster</button>
+    </div>
+</div>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+<script>
+const faq = {
+    "What types of events does HACKMASTER ORG organize?": "HACKMASTER ORG specializes in organizing a variety of tech events, including hackathons, workshops, conferences, and networking sessions.",
+    "How can I participate in your events?": "To participate in our events, you can visit our website and register for the upcoming events. We provide detailed information and registration options for each event.",
+    "Do you provide internships?": "Yes, we offer internship opportunities in collaboration with tech companies. Visit our internship section on the website to find more details about available positions and application procedures.",
+    "Can I get web/tech solutions from HACKMASTER ORG?": "Absolutely! HACKMASTER ORG provides web and tech solutions tailored to your needs. Whether it's website development, software solutions, or technical consultancy, we have you covered. Reach out to us through our website for more information.",
+    "How can I partner with HACKMASTER ORG for an event or collaboration?": "If you're interested in partnering with us for an event or collaboration, please contact our partnership team through the provided contact information on our website. We are open to discussing mutually beneficial partnerships.",
+    "How can I contact HACKMASTER ORG for further inquiries?": "You can contact us through the contact form on our website or reach out to us via email or phone. Our contact information is available on the Contact Us page.",
+    "What kind of support do you provide during your events?": "We offer comprehensive support during our events, including mentorship, technical assistance, and resources. Our goal is to ensure participants have a fulfilling and enriching experience."
+};
+
+const chatContainer = document.getElementById("chat-container");
+const chatMessages = document.getElementById("chat-messages");
+
+function toggleChat() {
+    chatContainer.style.display = chatContainer.style.display === "none" ? "flex" : "none";
+}
+
+function askQuestion(question) {
+    const message = document.createElement("div");
+    message.classList.add("message-container");
+    message.innerHTML = `
+        <div class="message-you">You: ${question}</div>
+    `;
+    chatMessages.appendChild(message);
+
+    if (faq.hasOwnProperty(question)) {
+        setTimeout(() => {
+            const reply = document.createElement("div");
+            reply.classList.add("message-container", "bot-message", "fade-in");
+            reply.innerHTML = `
+                <div class="message">Hackmaster: ${faq[question]}</div>
+            `;
+            chatMessages.appendChild(reply);
+        }, 500); // Delay for animation
+    } else {
+        setTimeout(() => {
+            const reply = document.createElement("div");
+            reply.classList.add("message-container", "bot-message", "fade-in");
+            reply.innerHTML = `
+                <div class="message">Bot: Sorry, I don't have an answer to that question.</div>
+            `;
+            chatMessages.appendChild(reply);
+        }, 500); // Delay for animation
+    }
+}
+</script>
+
+</body>
+</html>
