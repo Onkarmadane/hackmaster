@@ -1,171 +1,192 @@
+To convert your existing code into Bootstrap and ensure full responsiveness, we'll rewrite the HTML structure and utilize Bootstrap classes for layout and styling. Below is the modified version of your code with Bootstrap:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FAQ Chatbot</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
-<style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background-color: #f5f5f5;
-    }
-
-    #logo-button {
-        position: fixed;
-        bottom: 20px;
-        left: 20px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        padding: 10px;
-        border-radius: 50%;
-        cursor: pointer;
-        outline: none;
-        font-size: 20px;
-        z-index: 9999;
-        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    #chat-container {
-        position: fixed;
-        bottom: 80px;
-        left: 50px;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-        background-color: #ffffff;
-        color: #4CAF50;
-        font-size: 14px;
-        transition: all 0.3s ease;
-        max-height: 70%;
-        max-width: 30%;
-        display: none;
-        flex-direction: column;
-        animation: slideIn 0.5s ease;
-        z-index: 999;
-        background-color: #000000;
-    }
-
-    @keyframes slideIn {
-        from {
-            transform: translateY(100%);
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Chatbot</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f5f5f5;
         }
-        to {
-            transform: translateY(0);
+
+        #logo-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            outline: none;
+            font-size: 20px;
+            z-index: 9999;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
         }
-    }
 
-    #minimize-button {
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        padding: 10px;
-        cursor: pointer;
-        outline: none;
-        font-size: 20px;
-    }
-
-    #chat-messages {
-        padding: 10px;
-        flex-grow: 1;
-        overflow-y: auto;  
-    }
-
-    #options {
-        display: flex;
-        flex-wrap: wrap;
-        padding: 10px;
-        gap: 10px;
-        justify-content: center;
-        background-color: #f5f5f5;
-    }
-
-    #options button {
-        background-color: #4CAF50;
-        color: rgb(0, 0, 0);
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-
-    #options button:hover {
-        background-color: #45a049;
-    }
-
-    .message-container {
-        display: flex;
-        margin: 5px 0;
-    }
-
-    .message-container strong {
-        margin-right: 5px;
-    }
-
-    .message {
-        background-color: #4CAF50;
-        color: rgb(0, 0, 0);
-        padding: 10px;
-        border-radius: 5px;
-        margin-right: auto;
-        max-width: 80%;
-    }
-    .message-you {
-        background-color: #29622a;
-        color: rgb(255, 255, 255);
-        padding: 10px;
-        border-radius: 5px;
-        margin-right: auto;
-        max-width: 80%;
-    }
-
-    .bot-message {
-        background-color: #000000;
-    }
-
-    .fade-in {
-        animation: fadeIn 0.5s ease forwards;
-    }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
+        #chat-container {
+            position: fixed;
+            bottom: 80px;
+            left: 50px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+            color: #4CAF50;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            max-height: 50%;
+            max-width: 30%;
+            display: none;
+            flex-direction: column;
+            animation: slideIn 0.5s ease;
+            z-index: 999;
+            background-color: #000000;
         }
-        to {
-            opacity: 1;
-            transform: translateY(0);
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(100%);
+            }
+            to {
+                transform: translateY(0);
+            }
         }
-    }
-</style>
+
+        #minimize-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            outline: none;
+            font-size: 20px;
+        }
+
+        #chat-messages {
+            padding: 10px;
+            flex-grow: 1;
+            overflow-y: auto;  
+        }
+
+        #options {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 10px;
+            gap: 10px;
+            justify-content: center;
+            background-color: #f5f5f5;
+        }
+
+        #options button {
+            background-color: #4CAF50;
+            color: rgb(0, 0, 0);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #options button:hover {
+            background-color: #45a049;
+        }
+
+        .message-container {
+            display: flex;
+            margin: 5px 0;
+        }
+
+        .message-container strong {
+            margin-right: 5px;
+        }
+
+        .message {
+            background-color: #4CAF50;
+            color: rgb(0, 0, 0);
+            padding: 10px;
+            border-radius: 5px;
+            margin-right: auto;
+            max-width: 80%;
+        }
+        .message-you {
+            background-color: #29622a;
+            color: rgb(255, 255, 255);
+            padding: 10px;
+            border-radius: 5px;
+            margin-right: auto;
+            max-width: 80%;
+        }
+
+        .bot-message {
+            background-color: #000000;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
 
 <button id="logo-button" onclick="toggleChat()"><i class="fas fa-comment"></i></button>
 
-<div id="chat-container" class="p-2">
+<div id="chat-container" class="container">
     <button id="minimize-button" onclick="toggleChat()">-</button>
     <div id="chat-messages">
         <div class="message-container bot-message fade-in">
             <div class="message">Hi there! How can I assist you today?</div>
         </div>
     </div>
-    <div id="options" class="mt-auto">
-        <button onclick="askQuestion('What types of events does HACKMASTER ORG organize?')">Events</button>
-        <button onclick="askQuestion('How can I participate in your events?')">Participation</button>
-        <button onclick="askQuestion('Do you provide internships?')">Internship</button>
-        <button onclick="askQuestion('Can I get web/tech solutions from HACKMASTER ORG?')">Tech Solutions</button>
-        <button onclick="askQuestion('How can I partner with HACKMASTER ORG for an event or collaboration?')">Collaboration</button>
-        <button onclick="askQuestion('What kind of support do you provide during your events?')">Hackmaster Support</button>
-        <button onclick="askQuestion('How can I contact HACKMASTER ORG for further inquiries?')">Contact Hackmaster</button>
+    <div id="options" class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <button onclick="askQuestion('What types of events does HACKMASTER ORG organize?')" class="btn btn-primary btn-block">Events</button>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <button onclick="askQuestion('How can I participate in your events?')" class="btn btn-primary btn-block">Participation</button>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <button onclick="askQuestion('Do you provide internships?')" class="btn btn-primary btn-block">Internship</button>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <button onclick="askQuestion('Can I get web/tech solutions from HACKMASTER ORG?')" class="btn btn-primary btn-block">Tech Solutions</button>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <button onclick="askQuestion('How can I partner with HACKMASTER ORG for an event or collaboration?')" class="btn btn-primary btn-block">Collaboration</button>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <button onclick="askQuestion('What kind of support do you provide during your events?')" class="btn btn-primary btn-block">Hackmaster Support</button>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <button onclick="askQuestion('How can I contact HACKMASTER ORG for further inquiries?')" class="btn btn-primary btn-block">Contact Hackmaster</button>
+            </div>
+        </div>
     </div>
 </div>
 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 <script>
 const faq = {
     "What types of events does HACKMASTER ORG organize?": "HACKMASTER ORG specializes in organizing a variety of tech events, including hackathons, workshops, conferences, and networking sessions.",
@@ -215,4 +236,4 @@ function askQuestion(question) {
 </script>
 
 </body>
-</html>
+</html> 
