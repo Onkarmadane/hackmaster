@@ -8,15 +8,14 @@ import { getStorage, ref, listAll, getDownloadURL } from 'https://www.gstatic.co
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "AIzaSyBvcMl9tbOXtUbz8fuT4zTfu3JGkUiCkwo",
-    authDomain: "fir-trial-f6ada.firebaseapp.com",
-    databaseURL: "https://fir-trial-f6ada-default-rtdb.firebaseio.com",
-    projectId: "fir-trial-f6ada",
-    storageBucket: "fir-trial-f6ada.appspot.com",
-    messagingSenderId: "851849158104",
-    appId: "1:851849158104:web:a1cd208c3044d17eb9e6ad",
-    measurementId: "G-BK5HJ6V6H8"
-};
+    apiKey: "AIzaSyAvslFcf0O-BHju1SDRK1DJK8btO8BYPic",
+    authDomain: "hackmaster-524ac.firebaseapp.com",
+    projectId: "hackmaster-524ac",
+    storageBucket: "hackmaster-524ac.appspot.com",
+    messagingSenderId: "265553982462",
+    appId: "1:265553982462:web:0501b9afb832463b9b86af",
+    measurementId: "G-PVBXVW95SH"
+  };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
