@@ -5,6 +5,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hackmaster | Contact Us</title>
+  <meta name="description"
+    content="HackMaster Org is your premier destination for all things tech events. As a leading event management company, we specialize in curating and hosting cutting-edge tech events that inspire innovation and collaboration. Whether you're seeking hands-on experience through our dynamic internships, looking to validate your skills with industry-leading certifications, or in need of bespoke web solutions to enhance your digital presence, HackMaster Org has you covered. Join us in shaping the future of technology through our meticulously crafted events and unparalleled services.">
+  <meta name="keywords" content="Tech Events, Event Management, Internships, Certifications, Web Solutions">
+  <meta name="author" content="Chinmay Kulthe">
   <link rel="icon" href="./assets/img/logo1.webp" type="image/x-icon">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -98,8 +102,7 @@
           a matter of hours to help you.</p>
         <div class="row">
           <div class="col-md-9 mb-md-0 mb-5 " data-aos="fade-right">
-            <form action="./submit" method="POST" id="contact-form" name="contact-form">
-
+            <form id="contact_form" name="contact-form" onsubmit="sendEmail()">
               <!--Grid row-->
               <div class="row">
                 <div class="col-md-6">
@@ -129,10 +132,11 @@
                 </div>
               </div>
               <!--Grid row-->
+              <div class="text-center text-md-left">
+                <a style="padding: 2%; width: 100%;" class="btn btn-success"><b>Submit</b></a>
+              </div>
             </form>
-            <div class="text-center text-md-left">
-              <a style="padding: 2%; width: 100%;" class="btn btn-success"><b>Submit</b></a>
-            </div>
+
             <div class="status"></div>
           </div>
           <!--Grid column-->
@@ -157,19 +161,19 @@
 
     <!-- Copyright -->
     <div class="text-center p-3">
-      © 2023 Copyright:
-      <a class="text-white" href="#">Hackmaster org.</a>
+      © 2024 Copyright:
+      <p class="text-white" >Hackmaster org.</p>
     </div>
     <div class="text-center" id="footer-logo">
-   HACKMASTER
+      HACKMASTER
     </div>
 
     <!-- Copyright -->
 
   </footer>
   <!-- Back to top button-->
-  <a href="#" id="toTopBtn" class="cd-top text-replace js-cd-top cd-top--is-visible cd-top--fade-out  hvr-wobble-vertical"
-    data-abc="true"></a>
+  <a href="#" id="toTopBtn"
+    class="cd-top text-replace js-cd-top cd-top--is-visible cd-top--fade-out  hvr-wobble-vertical" data-abc="true"></a>
   <!-- ?scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
@@ -178,6 +182,9 @@
   <script>
     AOS.init();
   </script>
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script src="./assets/js/email.js"></script>
+
 </body>
 
 </html>
